@@ -1,0 +1,580 @@
+[
+    {
+        "id": "bc63a417de82d440",
+        "type": "tab",
+        "label": "Medibox Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8af9023aad30ef99",
+        "type": "mqtt in",
+        "z": "bc63a417de82d440",
+        "name": "LDR Data",
+        "topic": "MEDIBOX-LDR",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "75b4b019a752e13b",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 220,
+        "y": 60,
+        "wires": [
+            [
+                "b502954b4c306049",
+                "7b842c8e2fa94d4f"
+            ]
+        ]
+    },
+    {
+        "id": "b502954b4c306049",
+        "type": "ui_gauge",
+        "z": "bc63a417de82d440",
+        "name": "Average Light Intensity",
+        "group": "a1b2c3d4.e5f6a7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Average Light Intensity",
+        "label": "",
+        "format": "{{value | number:2}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 440,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7b842c8e2fa94d4f",
+        "type": "ui_chart",
+        "z": "bc63a417de82d440",
+        "name": "Light Intensity History",
+        "group": "a1b2c3d4.e5f6a7",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Light Intensity History",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "cubic",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 410,
+        "y": 110,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3ff0a7a0060119e",
+        "type": "ui_slider",
+        "z": "bc63a417de82d440",
+        "name": "Sampling Interval",
+        "label": "Sampling Interval (s)",
+        "tooltip": "",
+        "group": "a1b2c3d4.e5f6a7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "MEDIBOX-UNIQUE/LDR-TS",
+        "topicType": "str",
+        "min": "1",
+        "max": "60",
+        "step": "1",
+        "className": "",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "f7cfcf6c3140ad02"
+            ]
+        ]
+    },
+    {
+        "id": "f7cfcf6c3140ad02",
+        "type": "mqtt out",
+        "z": "bc63a417de82d440",
+        "name": "Set Sampling Interval",
+        "topic": "LDR-TS",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75b4b019a752e13b",
+        "x": 610,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "13a37d6a10e63159",
+        "type": "ui_slider",
+        "z": "bc63a417de82d440",
+        "name": "Sending Interval",
+        "label": "Sending Interval (s)",
+        "group": "a1b2c3d4.e5f6a7",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "MEDIBOX-UNIQUE/LDR-TU",
+        "min": "30",
+        "max": "600",
+        "step": "1",
+        "x": 410,
+        "y": 210,
+        "wires": [
+            [
+                "4cb00b8cb6681256"
+            ]
+        ]
+    },
+    {
+        "id": "4cb00b8cb6681256",
+        "type": "mqtt out",
+        "z": "bc63a417de82d440",
+        "name": "Set Sending Interval",
+        "topic": "LDR-TU",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75b4b019a752e13b",
+        "x": 610,
+        "y": 210,
+        "wires": []
+    },
+    {
+        "id": "854579ee6ba3a1cd",
+        "type": "ui_slider",
+        "z": "bc63a417de82d440",
+        "name": "Minimum Angle",
+        "label": "Minimum Angle (°)",
+        "group": "b2c3d4e5.f6a7b8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "MEDIBOX-UNIQUE/SERVO-THETA",
+        "min": "0",
+        "max": "120",
+        "step": "1",
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "04f10c14edcf1cf5"
+            ]
+        ]
+    },
+    {
+        "id": "04f10c14edcf1cf5",
+        "type": "mqtt out",
+        "z": "bc63a417de82d440",
+        "name": "Set Theta Offset",
+        "topic": "SERVO-THETA",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75b4b019a752e13b",
+        "x": 610,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0a1424dae5561995",
+        "type": "ui_slider",
+        "z": "bc63a417de82d440",
+        "name": "Controlling Factor",
+        "label": "Controlling Factor",
+        "group": "b2c3d4e5.f6a7b8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "MEDIBOX-UNIQUE/SERVO-GAMMA",
+        "min": "0",
+        "max": "1",
+        "step": "0.01",
+        "x": 410,
+        "y": 310,
+        "wires": [
+            [
+                "a15515231f338f56"
+            ]
+        ]
+    },
+    {
+        "id": "a15515231f338f56",
+        "type": "mqtt out",
+        "z": "bc63a417de82d440",
+        "name": "Set Gamma Factor",
+        "topic": "SERVO-GAMMA",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75b4b019a752e13b",
+        "x": 610,
+        "y": 310,
+        "wires": []
+    },
+    {
+        "id": "fdd9d1762962c7ec",
+        "type": "ui_slider",
+        "z": "bc63a417de82d440",
+        "name": "Ideal Temperature",
+        "label": "Ideal Temperature (°C)",
+        "tooltip": "",
+        "group": "b2c3d4e5.f6a7b8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "outs": "end",
+        "topic": "MEDIBOX-UNIQUE/SERVO-TMED",
+        "topicType": "str",
+        "min": "10",
+        "max": "40",
+        "step": "1",
+        "className": "",
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "facae339e5fb360c"
+            ]
+        ]
+    },
+    {
+        "id": "facae339e5fb360c",
+        "type": "mqtt out",
+        "z": "bc63a417de82d440",
+        "name": "Set Tmed",
+        "topic": "SERVO-TMED",
+        "qos": "1",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "75b4b019a752e13b",
+        "x": 610,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "6589f1ba443da38f",
+        "type": "mqtt in",
+        "z": "bc63a417de82d440",
+        "name": "Temperature Data",
+        "topic": "MEDIBOX-TEMP",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "75b4b019a752e13b",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 220,
+        "y": 410,
+        "wires": [
+            [
+                "fb26b4ef7479cbff"
+            ]
+        ]
+    },
+    {
+        "id": "fb26b4ef7479cbff",
+        "type": "ui_gauge",
+        "z": "bc63a417de82d440",
+        "name": "Temperature",
+        "group": "c3d4e5f6.a7b8c9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature (°C)",
+        "label": "°C",
+        "format": "{{value | number:1}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#03c6c9",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "24",
+        "seg2": "32",
+        "diff": false,
+        "className": "",
+        "x": 420,
+        "y": 410,
+        "wires": []
+    },
+    {
+        "id": "0ae7680c3635dca4",
+        "type": "inject",
+        "z": "bc63a417de82d440",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "f3ff0a7a0060119e"
+            ]
+        ]
+    },
+    {
+        "id": "13cd1ba4db09cbf6",
+        "type": "inject",
+        "z": "bc63a417de82d440",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "120",
+        "payloadType": "num",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "13a37d6a10e63159"
+            ]
+        ]
+    },
+    {
+        "id": "ce2f86717622f91b",
+        "type": "inject",
+        "z": "bc63a417de82d440",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "30",
+        "payloadType": "num",
+        "x": 210,
+        "y": 260,
+        "wires": [
+            [
+                "854579ee6ba3a1cd"
+            ]
+        ]
+    },
+    {
+        "id": "29139be42e984296",
+        "type": "inject",
+        "z": "bc63a417de82d440",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "0.75",
+        "payloadType": "num",
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "0a1424dae5561995"
+            ]
+        ]
+    },
+    {
+        "id": "f6b1fc40569945be",
+        "type": "inject",
+        "z": "bc63a417de82d440",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "30",
+        "payloadType": "num",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "fdd9d1762962c7ec"
+            ]
+        ]
+    },
+    {
+        "id": "75b4b019a752e13b",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "a1b2c3d4.e5f6a7",
+        "type": "ui_group",
+        "name": "Light Intensity",
+        "tab": "1ae234804713391d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b2c3d4e5.f6a7b8",
+        "type": "ui_group",
+        "name": "Servo Control",
+        "tab": "1ae234804713391d",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c3d4e5f6.a7b8c9",
+        "type": "ui_group",
+        "name": "Environment",
+        "tab": "1ae234804713391d",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1ae234804713391d",
+        "type": "ui_tab",
+        "name": "Medibox Final",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
